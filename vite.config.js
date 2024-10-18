@@ -3,13 +3,26 @@ import react from '@vitejs/plugin-react'
 import path from 'path';
 
 export default defineConfig({
+  base: "./",
   plugins: [react()],
   optimizeDeps: {
-    include: ['@mui/material'],
+    include: ["@mui/material"],
   },
- resolve: { 
-   alias: {
-     "@": path.resolve(__dirname, "./src"),
-   },
- },
-})
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            return id.split("node_modules/")[1].split("/")[0].toString(); // Group by package name
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
+});
