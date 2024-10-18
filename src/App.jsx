@@ -5,7 +5,7 @@ import Countdown from './Components/Countdown';
 import BirthdayWish from './Components/BirthdayWish';
 
 function App() {
-  return ( 
+  return (
     <Router>
       <Routes>
         <Route path="/" element={<BirthdayForm />} />
