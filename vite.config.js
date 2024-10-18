@@ -7,7 +7,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['@mui/material'],
   },
- resolve: {
+ resolve: { 
    alias: {
      "@": path.resolve(__dirname, "./src"),
    },
